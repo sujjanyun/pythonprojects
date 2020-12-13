@@ -1,5 +1,5 @@
-# hotel dictionary
-dictionary = {
+#  dictionary
+hotel = {
   '1': {
     '101': ['George Jefferson', 'Wheezy Jefferson'],
   },
@@ -11,42 +11,71 @@ dictionary = {
   }
 }
 
+
 # my functions
-def checking_in(dictionary):
-
-  if check == ("checking in") or ("1"):
-    x = input("Yay! And how many will be checking in today? ")
-    if int(x) <= 6:
-      print("Perfect. We can accommodate that.")
-      y = input("Alright. And what is(are) your name(s)? ")
-
-      print(f"Hello {y}, party of {x}. Give us one moment to assign you a room.")
-
+def checking_in():
+  occupants = input("Yay! And how many will be checking in today? ")
+  if int(occupants) <= 6:
+    print("Perfect. We can accommodate that.")
+    if int(occupants) == 1:
+      y = str(input("What is your name? "))
     else:
-      print("I'm sorry. We can only accommodate parties of less than 6!")
+      y = str(input("What are your names? "))
 
-  room_assignment(dictionary)
+    print(f"Hello {y}, party of {occupants}! Below is your floor and room number.")
+      
+    import random
 
-def room_assignment(dictionary):
-  for floor, room in dictionary.items():
-    print(floor, room)
-  from random import randrange
-  dict.items()
-
-int(floor) = random.randint(1,10)
-int(room) = random.randint(1,50)
-
-assignment = (floor + room)
-
-def checking_out(dictionary):
-    if check == ("checking out") or ("2"):
-        print(" ")
+    floor = str(random.randrange(1, 4))
+    room = str(random.randrange(10, 41))
+    room_number = (floor + room)
 
 
-check = input("Hello! Welcome to Hotel del Luna. Will you be checking in (1) or checking out (2) today? ")
+    while True:
+      try:
+        for k in hotel.values():
+          if k != room_number:
+            print(f"Floor: {floor}")
+            print(f"Room Number: {room_number}")
+            print("Enjoy your stay at Hotel del Luna.")
 
-checking_in(dictionary)
+            hotel[floor][room_number] = y
 
-checking_out(dictionary)
+        break
+
+      except KeyError:
+        break
+
+    print(f"New Register: {hotel}")
+
+  else:
+    print("I'm sorry. We can only accommodate parties of less than 6!")
+
+  
+def checking_out():
+  room_number = str(input("Excellent. I hope you enjoyed your stay with us. What is your room number? "))
+
+  while True:
+    try:
+      for k in hotel.values():
+        del k[room_number]
+
+        print(f"New Register: {hotel}")
+
+        print("Wonderful. Thank you for staying at Hotel del Luna. We hope to see you again!")
+
+    except KeyError:
+      break
 
 
+
+check = input("Welcome to Hotel del Luna. Will you be checking in or checking out with us today? ")
+
+if check == ("checking in"):
+  checking_in()
+
+elif check == ("checking out"):
+  checking_out()
+
+else:
+  exit()
