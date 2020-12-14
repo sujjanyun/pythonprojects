@@ -46,7 +46,11 @@ def checking_in():
       except KeyError:
         break
 
-    print(f"New Register: {hotel}")
+    new_register = input("Would you like to see the new register? ")
+    if new_register == ("yes"):
+      print(f"New Register: {hotel}")
+    else:
+      exit()
 
   else:
     print("I'm sorry. We can only accommodate parties of less than 6!")
@@ -60,15 +64,20 @@ def checking_out():
       for k in hotel.values():
         del k[room_number]
 
-        print(f"New Register: {hotel}")
-
         print("Wonderful. Thank you for staying at Hotel del Luna. We hope to see you again!")
+        
+        new_register = input("Would you like to see the new register? ")
+
+        if new_register == ("yes"):
+          print(f"New Register: {hotel}")
+        else:
+          exit()
 
     except KeyError:
       break
 
 
-
+#THE THANG
 check = input("Welcome to Hotel del Luna. Will you be checking in or checking out with us today? ")
 
 if check == ("checking in"):
