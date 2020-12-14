@@ -33,13 +33,15 @@ def checking_in():
 
     while True:
       try:
-        for k in hotel.values():
+        for k in hotel.items():
           if k != room_number:
             print(f"Floor: {floor}")
             print(f"Room Number: {room_number}")
             print("Enjoy your stay at Hotel del Luna.")
 
             hotel[floor][room_number] = y
+
+            break
 
         break
 
@@ -55,13 +57,13 @@ def checking_in():
   else:
     print("I'm sorry. We can only accommodate parties of less than 6!")
 
-  
+
 def checking_out():
   room_number = str(input("Excellent. I hope you enjoyed your stay with us. What is your room number? "))
 
   while True:
     try:
-      for k in hotel.values():
+      for k in hotel.items():
         del k[room_number]
 
         print("Wonderful. Thank you for staying at Hotel del Luna. We hope to see you again!")
@@ -78,12 +80,12 @@ def checking_out():
 
 
 #THE THANG
-check = input("Welcome to Hotel del Luna. Will you be checking in or checking out with us today? ")
+check = input("Welcome to Hotel del Luna. Will you be checking in or checking out with us today? ").lower()
 
-if check == ("checking in"):
+if check == ("in"):
   checking_in()
 
-elif check == ("checking out"):
+elif check == ("out"):
   checking_out()
 
 else:
